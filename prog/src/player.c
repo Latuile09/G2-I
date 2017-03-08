@@ -7,6 +7,7 @@
 #include <misc.h>
 #include <constant.h>
 
+
 struct player {
 	int x, y;
 	enum direction current_direction;
@@ -119,29 +120,31 @@ int player_move(struct player* player, struct map* map) {
 			if(map_get_cell_type(map,x,y-2)==CELL_EMPTY && map_get_cell_type(map, x, y-1)==CELL_BOX ){
 				map_set_cell_type(map,x,y-2,CELL_BOX);
 				player->y--;
-				move = 1;
+				move = 10;
 			}}
 			if(map_get_cell_type(map, x, y-1)==CELL_EMPTY){
 				player->y--;
-				move = 1;
+				move = 10;
 			}
 			}
 		break;
 
 	case SOUTH:
 		if (player_move_aux(player, map, x, y + 1)) {
+			door_level(map,x,y+1);
 			if(map_is_inside(map,x,y+2)){
 						if(map_get_cell_type(map,x,y+2)==CELL_EMPTY && map_get_cell_type(map, x, y+1)==CELL_BOX ){
 							map_set_cell_type(map,x,y+2,CELL_BOX);
 							player->y++;
-							move = 1;
+							move = 10;
 						}}
 						if(map_get_cell_type(map, x, y+1)==CELL_EMPTY){
 							player->y++;
-							move = 1;
+							move = 10;
 						}
 						if(map_get_cell_type(map, x,y+1)==CELL_DOOR && map_get_door_type(map, x, y+1)==DOOR_OPEN){
-							move=2;
+							move=door_level(map,x,y+1);
+
 						}
 		}
 		break;
@@ -152,12 +155,12 @@ int player_move(struct player* player, struct map* map) {
 						if(map_get_cell_type(map,x-2,y)==CELL_EMPTY && map_get_cell_type(map, x-1, y)==CELL_BOX ){
 							map_set_cell_type(map,x-2,y,CELL_BOX);
 							player->x--;
-							move = 1;
+							move = 10;
 						}}
 						if(map_get_cell_type(map, x-1, y)==CELL_EMPTY || map_get_cell_type(map, x-1, y)==CELL_DOOR)
 						{
 							player->x--;
-							move = 1;
+							move = 10;
 						}
 		}
 		break;
@@ -168,23 +171,20 @@ int player_move(struct player* player, struct map* map) {
 									if(map_get_cell_type(map,x+2,y)==CELL_EMPTY && map_get_cell_type(map, x+1, y)==CELL_BOX ){
 										map_set_cell_type(map,x+2,y,CELL_BOX);
 										player->x++;
-										move = 1;
+										move = 10;
 									}}
 									if(map_get_cell_type(map, x+1, y)==CELL_EMPTY){
 										player->x++;
-										move = 1;
+										move = 10;
 									}
 		}
 		break;
 	}
 
-	if (move) {
-		if(map_get_cell_type(map, x,y)==CELL_DOOR){
-			move=2;
-		}
+
 		map_set_cell_type(map, x, y, CELL_EMPTY);
 		map_set_cell_type(map, player->x, player->y, CELL_PLAYER);
-	};
+
 	return move;
 }
 

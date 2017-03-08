@@ -82,6 +82,14 @@ enum cell_type map_get_door_type(struct map* map, int x, int y)
 {
 	assert(map && map_is_inside(map, x, y));
 	return map->grid[CELL(x,y)] & 0x01;
+
+}
+
+int door_level(struct map* map,int x,int y)
+{	int level=((map->grid[CELL(x,y)]) & 0x0f) >> 1;
+	//printf("\n type:%d  case %d %d\n",map->grid[CELL(x,y)],x,y);
+	//printf("niveau:%d\n",level);
+	return level;
 }
 
 void map_set_cell_type(struct map* map, int x, int y, enum cell_type type)
@@ -137,10 +145,7 @@ void display_door(struct map* map, int x, int  y, unsigned char type)
 	}
 }
 
-int door_level(struct map* map,int x,int y)
-{	int level=(map->grid[(x) + (y) * map->width] & 0x0f) >> 1;
-	return level;
-}
+
 
 void map_display(struct map* map)
 {
@@ -240,7 +245,7 @@ struct map* map_get_level(int level)
 	FILE* map_file=NULL;
 	char* name_level=malloc(sizeof(name_level));
 	sprintf(name_level,"data/map_%d",level);
-	printf("%s",name_level);
+	//printf("%s",name_level);
 	map_file=fopen(name_level,"r");
 	int dimensions[2];
 	if (map_file!=NULL)

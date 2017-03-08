@@ -47,6 +47,13 @@ struct player* game_get_player(struct game* game) {
 	return game->player;
 }
 
+short game_get_currentlevel(struct game* game) {
+	assert(game);
+	return game->current;
+}
+
+
+
 void game_banner_display(struct game* game) {
 	assert(game);
 
@@ -56,7 +63,7 @@ void game_banner_display(struct game* game) {
 	for (int i = 0; i < map_get_width(map); i++)
 		window_display_image(sprite_get_banner_line(), i * SIZE_BLOC, y);
 
-	int white_bloc = ((map_get_width(map) * SIZE_BLOC) - 6 * SIZE_BLOC) / 4;
+	int white_bloc = ((map_get_width(map) * SIZE_BLOC) - 6 * SIZE_BLOC) / 14;
 	int x = white_bloc;
 	y = (map_get_height(map) * SIZE_BLOC) + LINE_HEIGHT;
 	window_display_image(sprite_get_banner_life(), x, y);
@@ -87,7 +94,7 @@ void game_banner_display(struct game* game) {
 		window_display_image(sprite_get_door_opened(1), x, y);
 
 	x = 3 * white_bloc + 9 * SIZE_BLOC;
-		window_display_image(sprite_get_number(1), x, y);
+		window_display_image(sprite_get_number(game_get_currentlevel(game)), x, y);
 
 }
 
@@ -119,26 +126,26 @@ static short input_keyboard(struct game* game) {
 			case SDLK_UP:
 				player_set_current_way(player, NORTH);
 				int move=player_move(player, map);
-				if(move!=0 && move!=1)
+				if(move!=0 && move!=10)
 					change_level(game);
 				break;
 			case SDLK_DOWN:
 				player_set_current_way(player, SOUTH);
 				move=player_move(player, map);
-				if(move!=0 && move!=1){
-					printf("okayyy\n");
-					change_level(game);}
+				if(move!=0 && move!=10){
+					printf("okayyy\n ,%d \n",move);
+					change_level2(game,move);}
 				break;
 			case SDLK_RIGHT:
 				player_set_current_way(player, EAST);
 				move=player_move(player, map);
-				if(move!=0 && move!=1)
+				if(move!=0 && move!=10)
 					change_level(game);
 				break;
 			case SDLK_LEFT:
 				player_set_current_way(player, WEST);
 				move=player_move(player, map);
-				if(move!=0 && move!=1)
+				if(move!=0 && move!=10)
 					change_level(game);
 				break;
 			case SDLK_SPACE:
@@ -166,10 +173,6 @@ void change_level2(struct game* game,int level){
 
 }
 
-/*int door_level(struct map* map,int x,int y)
-{	int level=(map->grid[(x) + (y) * map->width] & 0x0f) >> 1;
-	return level;
-}*/
 
 
 
