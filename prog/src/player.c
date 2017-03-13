@@ -12,15 +12,17 @@ struct player {
 	int x, y;
 	enum direction current_direction;
 	int nb_bombs;
+	int nb_keys;
 };
 
-struct player* player_init(int bomb_number) {
+struct player* player_init() {
 	struct player* player = malloc(sizeof(*player));
 	if (!player)
 		error("Memory error");
 
 	player->current_direction = SOUTH;
-	player->nb_bombs = bomb_number;
+	player->nb_bombs = 3;
+	player->nb_keys = 0;
 
 	return player;
 }
@@ -58,6 +60,21 @@ void player_inc_nb_bomb(struct player* player) {
 void player_dec_nb_bomb(struct player* player) {
 	assert(player);
 	player->nb_bombs -= 1;
+}
+
+int player_get_nb_key(struct player* player) {
+	assert(player);
+	return player->nb_keys;
+}
+
+void player_inc_nb_key(struct player* player) {
+	assert(player);
+	player->nb_keys += 1;
+}
+
+void player_dec_nb_key(struct player* player) {
+	assert(player);
+	player->nb_keys -= 1;
 }
 
 void player_from_map(struct player* player, struct map* map) {
@@ -146,12 +163,20 @@ int player_move(struct player* player, struct map* map) {
 							move=door_level(map,x,y+1);
 
 						}
+						if(map_get_cell_type(map, x, y+1)==CELL_KEY){
+
+							player->y++;
+							move = 10;
+							player_inc_nb_key(player);
+						}
 		}
 		break;
 
 	case WEST:
+		printf("try to go west\n");
 		if (player_move_aux(player, map, x - 1, y)) {
 			if(map_is_inside(map,x-2,y)){
+						printf("map is inside\n");
 						if(map_get_cell_type(map,x-2,y)==CELL_EMPTY && map_get_cell_type(map, x-1, y)==CELL_BOX ){
 							map_set_cell_type(map,x-2,y,CELL_BOX);
 							player->x--;

@@ -71,6 +71,8 @@ SDL_Surface* bonus[NB_BONUS + 1];
 // player
 SDL_Surface* player_img[4];
 
+SDL_Surface* bomb_img[4];
+
 static void banner_load() {
 	// numbers imgs
 	numbers[0] = load_image(BANNER_0);
@@ -114,6 +116,7 @@ static void map_load() {
 	door_closed = load_image(MAP_DOOR_CLOSED);
 }
 
+
 static void map_unload() {
 	SDL_FreeSurface(tree);
 	SDL_FreeSurface(box);
@@ -150,11 +153,24 @@ static void player_unload() {
 		SDL_FreeSurface(player_img[i]);
 }
 
+static void bomb_load(){
+	bomb_img[0]=load_image(BOMB_TTL1);
+	bomb_img[1]=load_image(BOMB_TTL2);
+	bomb_img[2]=load_image(BOMB_TTL3);
+	bomb_img[3]=load_image(BOMB_TTL4);
+}
+
+static void bomb_unload() {
+	for (int i = 0; i < 4; i++)
+		SDL_FreeSurface(bomb_img[i]);
+}
+
 void sprite_load() {
 	map_load();
 	bonus_load();
 	banner_load();
 	player_load();
+	bomb_load();
 }
 
 void sprite_free() {
@@ -162,6 +178,7 @@ void sprite_free() {
 	bonus_unload();
 	banner_unload();
 	player_unload();
+	bomb_unload();
 }
 
 SDL_Surface* sprite_get_number(short number) {
@@ -172,6 +189,11 @@ SDL_Surface* sprite_get_number(short number) {
 SDL_Surface* sprite_get_player(enum direction direction) {
 	assert(player_img[direction]);
 	return player_img[direction];
+}
+
+SDL_Surface* sprite_get_bomb() {
+	assert(bomb_img[1]); //not the good sprite
+	return bomb_img[1];
 }
 
 SDL_Surface* sprite_get_banner_life() {

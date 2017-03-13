@@ -1,0 +1,14 @@
+#include <map.h>
+
+struct bomb;
+
+// Creates a new bomb
+struct bomb* bomb_init();
+void bomb_free(struct bomb* bomb);
+
+void set_bomb_range(struct bomb* bomb,int range);
+
+void bomb_set_place_and_time(struct bomb* bomb,int range,int time,struct player* player);
+
+// Display the bomb on the screen
+void bomb_display(struct bomb* bomb);

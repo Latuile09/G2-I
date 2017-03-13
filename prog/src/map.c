@@ -94,7 +94,8 @@ int door_level(struct map* map,int x,int y)
 
 void map_set_cell_type(struct map* map, int x, int y, enum cell_type type)
 {
-	assert(map && map_is_inside(map, x, y));
+	assert(map );
+	assert(map_is_inside(map, x, y));
 	map->grid[CELL(x,y)] = type;
 }
 

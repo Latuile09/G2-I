@@ -3,6 +3,7 @@
 
 #include <player.h>
 #include <map.h>
+#include <bomb.h>
 
 // Abstract data type
 struct game;
@@ -20,10 +21,10 @@ struct player* game_get_player(struct game* game);
 struct map* game_get_current_map(struct game* game);
 
 // Display the game on the screen
-void game_display(struct game* game);
+void game_display(struct game* game,int timer);
 
 // update
-int game_update(struct game* game);
+int game_update(struct game* game,int timer);
 
 //change level
 void change_level(struct game* game);

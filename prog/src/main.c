@@ -30,9 +30,9 @@ int main(int argc, char *argv[]) {
 	while (!done) {
 		timer = SDL_GetTicks();
 
-		done = game_update(game);
-		game_display(game);
-
+		done = game_update(game,timer);
+		game_display(game,timer);
+		//printf("%d\n",timer);
 		execution_speed = SDL_GetTicks() - timer;
 		if (execution_speed < ideal_speed)
 			SDL_Delay(ideal_speed - execution_speed); // we are ahead of ideal time. let's wait.

@@ -1,289 +1,56 @@
-11:50:27 **** Incremental Build of configuration Build (GNU) for project bombeirb ****
+19:22:40 **** Incremental Build of configuration Build (GNU) for project bombeirb ****
 make all 
 make[1] : on entre dans le répertoire « /net/malt/t/emugnier001/Documents/tp_cc/S6/Pro/prog/.obj »
 make[1]: Rien à faire pour « all ».
 make[1] : on quitte le répertoire « /net/malt/t/emugnier001/Documents/tp_cc/S6/Pro/prog/.obj »
-11:50:30 **** Incremental Build of configuration Build (GNU) for project bombeirb ****
+19:22:45 **** Incremental Build of configuration Build (GNU) for project bombeirb ****
 make all 
 make[1] : on entre dans le répertoire « /net/malt/t/emugnier001/Documents/tp_cc/S6/Pro/prog/.obj »
-gcc -MM -I../include  ../src/game.c > ../.obj/game.d
-gcc -c -Wall -O0 -g -std=c99 -I../include/ `sdl-config  --cflags` -o ../.obj/game.o ../src/game.c 
-gcc -o ../bin/bombeirb ../.obj/misc.o ../.obj/main.o ../.obj/player.o ../.obj/game.o ../.obj/window.o ../.obj/sprite.o ../.obj/map.o `sdl-config --libs`  -lSDL_image
-rm ../.obj/game.d
+gcc -MM -I../include  ../src/main.c > ../.obj/main.d
+gcc -c -Wall -O0 -g -std=c99 -I../include/ `sdl-config  --cflags` -o ../.obj/main.o ../src/main.c 
+gcc -o ../bin/bombeirb ../.obj/misc.o ../.obj/main.o ../.obj/bomb.o ../.obj/player.o ../.obj/game.o ../.obj/window.o ../.obj/sprite.o ../.obj/map.o `sdl-config --libs`  -lSDL_image
+rm ../.obj/main.d
 make[1] : on quitte le répertoire « /net/malt/t/emugnier001/Documents/tp_cc/S6/Pro/prog/.obj »
-11:52:46 **** Incremental Build of configuration Build (GNU) for project bombeirb ****
+19:23:47 **** Incremental Build of configuration Build (GNU) for project bombeirb ****
 make all 
 make[1] : on entre dans le répertoire « /net/malt/t/emugnier001/Documents/tp_cc/S6/Pro/prog/.obj »
 gcc -MM -I../include  ../src/game.c > ../.obj/game.d
 gcc -c -Wall -O0 -g -std=c99 -I../include/ `sdl-config  --cflags` -o ../.obj/game.o ../src/game.c 
-../src/game.c:50:11: erreur: expected ‘=’, ‘,’, ‘;’, ‘asm’ or ‘__attribute__’ before ‘*’ token
- int player* game_get_current(struct game* game) {
-           ^
-../src/game.c: In function ‘game_banner_display’:
-../src/game.c:95:3: attention : implicit declaration of function ‘game_get_current’ [-Wimplicit-function-declaration]
-   window_display_image(sprite_get_number(game_get_current(game))), x, y);
-   ^
-../src/game.c:95:3: erreur: too few arguments to function ‘window_display_image’
-In file included from ../src/game.c:6:0:
-../include/window.h:12:6: note: declared here
- void window_display_image(SDL_Surface* surface, int x, int y);
-      ^
-../src/game.c:95:66: attention : l'opérande à gauche de la virgule n'a pas d'effet [-Wunused-value]
-   window_display_image(sprite_get_number(game_get_current(game))), x, y);
-                                                                  ^
-../src/game.c:95:69: attention : l'opérande à gauche de la virgule n'a pas d'effet [-Wunused-value]
-   window_display_image(sprite_get_number(game_get_current(game))), x, y);
-                                                                     ^
-../src/game.c:95:3: attention : statement with no effect [-Wunused-value]
-   window_display_image(sprite_get_number(game_get_current(game))), x, y);
-   ^
-../src/game.c:95:72: erreur: expected ‘;’ before ‘)’ token
-   window_display_image(sprite_get_number(game_get_current(game))), x, y);
-                                                                        ^
-../src/game.c:95:72: erreur: expected statement before ‘)’ token
-make[1]: *** [../.obj/game.o] Erreur 1
-rm ../.obj/game.d
+gcc -MM -I../include  ../src/bomb.c > ../.obj/bomb.d
+gcc -c -Wall -O0 -g -std=c99 -I../include/ `sdl-config  --cflags` -o ../.obj/bomb.o ../src/bomb.c 
+gcc -o ../bin/bombeirb ../.obj/misc.o ../.obj/main.o ../.obj/bomb.o ../.obj/player.o ../.obj/game.o ../.obj/window.o ../.obj/sprite.o ../.obj/map.o `sdl-config --libs`  -lSDL_image
+rm ../.obj/game.d ../.obj/bomb.d
 make[1] : on quitte le répertoire « /net/malt/t/emugnier001/Documents/tp_cc/S6/Pro/prog/.obj »
-make: *** [all] Erreur 2
-11:53:21 **** Incremental Build of configuration Build (GNU) for project bombeirb ****
+19:37:24 **** Incremental Build of configuration Build (GNU) for project bombeirb ****
 make all 
 make[1] : on entre dans le répertoire « /net/malt/t/emugnier001/Documents/tp_cc/S6/Pro/prog/.obj »
-gcc -MM -I../include  ../src/game.c > ../.obj/game.d
-gcc -c -Wall -O0 -g -std=c99 -I../include/ `sdl-config  --cflags` -o ../.obj/game.o ../src/game.c 
-../src/game.c:50:11: erreur: expected ‘=’, ‘,’, ‘;’, ‘asm’ or ‘__attribute__’ before ‘*’ token
- int player* game_get_current(struct game* game) {
-           ^
-../src/game.c: In function ‘game_banner_display’:
-../src/game.c:95:3: attention : implicit declaration of function ‘game_get_current’ [-Wimplicit-function-declaration]
-   window_display_image(sprite_get_number(game_get_current(game))), x, y);
-   ^
-../src/game.c:95:3: erreur: too few arguments to function ‘window_display_image’
-In file included from ../src/game.c:6:0:
-../include/window.h:12:6: note: declared here
- void window_display_image(SDL_Surface* surface, int x, int y);
-      ^
-../src/game.c:95:66: attention : l'opérande à gauche de la virgule n'a pas d'effet [-Wunused-value]
-   window_display_image(sprite_get_number(game_get_current(game))), x, y);
-                                                                  ^
-../src/game.c:95:69: attention : l'opérande à gauche de la virgule n'a pas d'effet [-Wunused-value]
-   window_display_image(sprite_get_number(game_get_current(game))), x, y);
-                                                                     ^
-../src/game.c:95:3: attention : statement with no effect [-Wunused-value]
-   window_display_image(sprite_get_number(game_get_current(game))), x, y);
-   ^
-../src/game.c:95:72: erreur: expected ‘;’ before ‘)’ token
-   window_display_image(sprite_get_number(game_get_current(game))), x, y);
-                                                                        ^
-../src/game.c:95:72: erreur: expected statement before ‘)’ token
-make[1]: *** [../.obj/game.o] Erreur 1
-rm ../.obj/game.d
+gcc -MM -I../include  ../src/bomb.c > ../.obj/bomb.d
+gcc -c -Wall -O0 -g -std=c99 -I../include/ `sdl-config  --cflags` -o ../.obj/bomb.o ../src/bomb.c 
+gcc -o ../bin/bombeirb ../.obj/misc.o ../.obj/main.o ../.obj/bomb.o ../.obj/player.o ../.obj/game.o ../.obj/window.o ../.obj/sprite.o ../.obj/map.o `sdl-config --libs`  -lSDL_image
+rm ../.obj/bomb.d
 make[1] : on quitte le répertoire « /net/malt/t/emugnier001/Documents/tp_cc/S6/Pro/prog/.obj »
-make: *** [all] Erreur 2
-11:54:16 **** Incremental Build of configuration Build (GNU) for project bombeirb ****
+08:07:31 **** Incremental Build of configuration Build (GNU) for project bombeirb ****
 make all 
 make[1] : on entre dans le répertoire « /net/malt/t/emugnier001/Documents/tp_cc/S6/Pro/prog/.obj »
-gcc -MM -I../include  ../src/game.c > ../.obj/game.d
-gcc -c -Wall -O0 -g -std=c99 -I../include/ `sdl-config  --cflags` -o ../.obj/game.o ../src/game.c 
-../src/game.c:50:13: erreur: expected ‘=’, ‘,’, ‘;’, ‘asm’ or ‘__attribute__’ before ‘*’ token
- short player* game_get_current(struct game* game) {
-             ^
-../src/game.c: In function ‘game_banner_display’:
-../src/game.c:95:3: attention : implicit declaration of function ‘game_get_current’ [-Wimplicit-function-declaration]
-   window_display_image(sprite_get_number(game_get_current(game))), x, y);
-   ^
-../src/game.c:95:3: erreur: too few arguments to function ‘window_display_image’
-In file included from ../src/game.c:6:0:
-../include/window.h:12:6: note: declared here
- void window_display_image(SDL_Surface* surface, int x, int y);
-      ^
-../src/game.c:95:66: attention : l'opérande à gauche de la virgule n'a pas d'effet [-Wunused-value]
-   window_display_image(sprite_get_number(game_get_current(game))), x, y);
-                                                                  ^
-../src/game.c:95:69: attention : l'opérande à gauche de la virgule n'a pas d'effet [-Wunused-value]
-   window_display_image(sprite_get_number(game_get_current(game))), x, y);
-                                                                     ^
-../src/game.c:95:3: attention : statement with no effect [-Wunused-value]
-   window_display_image(sprite_get_number(game_get_current(game))), x, y);
-   ^
-../src/game.c:95:72: erreur: expected ‘;’ before ‘)’ token
-   window_display_image(sprite_get_number(game_get_current(game))), x, y);
-                                                                        ^
-../src/game.c:95:72: erreur: expected statement before ‘)’ token
-make[1]: *** [../.obj/game.o] Erreur 1
-rm ../.obj/game.d
+make[1]: Rien à faire pour « all ».
 make[1] : on quitte le répertoire « /net/malt/t/emugnier001/Documents/tp_cc/S6/Pro/prog/.obj »
-make: *** [all] Erreur 2
-11:55:25 **** Incremental Build of configuration Build (GNU) for project bombeirb ****
+08:08:54 **** Incremental Build of configuration Build (GNU) for project bombeirb ****
 make all 
 make[1] : on entre dans le répertoire « /net/malt/t/emugnier001/Documents/tp_cc/S6/Pro/prog/.obj »
-gcc -MM -I../include  ../src/game.c > ../.obj/game.d
-gcc -c -Wall -O0 -g -std=c99 -I../include/ `sdl-config  --cflags` -o ../.obj/game.o ../src/game.c 
-../src/game.c:50:15: erreur: expected ‘=’, ‘,’, ‘;’, ‘asm’ or ‘__attribute__’ before ‘game_get_current’
- short current game_get_current(struct game* game) {
-               ^
-../src/game.c: In function ‘game_banner_display’:
-../src/game.c:95:3: attention : implicit declaration of function ‘game_get_current’ [-Wimplicit-function-declaration]
-   window_display_image(sprite_get_number(game_get_current(game))), x, y);
-   ^
-../src/game.c:95:3: erreur: too few arguments to function ‘window_display_image’
-In file included from ../src/game.c:6:0:
-../include/window.h:12:6: note: declared here
- void window_display_image(SDL_Surface* surface, int x, int y);
-      ^
-../src/game.c:95:66: attention : l'opérande à gauche de la virgule n'a pas d'effet [-Wunused-value]
-   window_display_image(sprite_get_number(game_get_current(game))), x, y);
-                                                                  ^
-../src/game.c:95:69: attention : l'opérande à gauche de la virgule n'a pas d'effet [-Wunused-value]
-   window_display_image(sprite_get_number(game_get_current(game))), x, y);
-                                                                     ^
-../src/game.c:95:3: attention : statement with no effect [-Wunused-value]
-   window_display_image(sprite_get_number(game_get_current(game))), x, y);
-   ^
-../src/game.c:95:72: erreur: expected ‘;’ before ‘)’ token
-   window_display_image(sprite_get_number(game_get_current(game))), x, y);
-                                                                        ^
-../src/game.c:95:72: erreur: expected statement before ‘)’ token
-make[1]: *** [../.obj/game.o] Erreur 1
-rm ../.obj/game.d
+make[1]: Rien à faire pour « all ».
 make[1] : on quitte le répertoire « /net/malt/t/emugnier001/Documents/tp_cc/S6/Pro/prog/.obj »
-make: *** [all] Erreur 2
-11:56:12 **** Incremental Build of configuration Build (GNU) for project bombeirb ****
+08:10:42 **** Incremental Build of configuration Build (GNU) for project bombeirb ****
 make all 
 make[1] : on entre dans le répertoire « /net/malt/t/emugnier001/Documents/tp_cc/S6/Pro/prog/.obj »
-gcc -MM -I../include  ../src/game.c > ../.obj/game.d
-gcc -c -Wall -O0 -g -std=c99 -I../include/ `sdl-config  --cflags` -o ../.obj/game.o ../src/game.c 
-../src/game.c:50:15: erreur: expected ‘=’, ‘,’, ‘;’, ‘asm’ or ‘__attribute__’ before ‘game_get_current’
- short current game_get_current(struct game* game) {
-               ^
-../src/game.c: In function ‘game_banner_display’:
-../src/game.c:95:3: attention : implicit declaration of function ‘game_get_current’ [-Wimplicit-function-declaration]
-   window_display_image(sprite_get_number(game_get_current(game))), x, y);
-   ^
-../src/game.c:95:3: erreur: too few arguments to function ‘window_display_image’
-In file included from ../src/game.c:6:0:
-../include/window.h:12:6: note: declared here
- void window_display_image(SDL_Surface* surface, int x, int y);
-      ^
-../src/game.c:95:66: attention : l'opérande à gauche de la virgule n'a pas d'effet [-Wunused-value]
-   window_display_image(sprite_get_number(game_get_current(game))), x, y);
-                                                                  ^
-../src/game.c:95:69: attention : l'opérande à gauche de la virgule n'a pas d'effet [-Wunused-value]
-   window_display_image(sprite_get_number(game_get_current(game))), x, y);
-                                                                     ^
-../src/game.c:95:3: attention : statement with no effect [-Wunused-value]
-   window_display_image(sprite_get_number(game_get_current(game))), x, y);
-   ^
-../src/game.c:95:72: erreur: expected ‘;’ before ‘)’ token
-   window_display_image(sprite_get_number(game_get_current(game))), x, y);
-                                                                        ^
-../src/game.c:95:72: erreur: expected statement before ‘)’ token
-make[1]: *** [../.obj/game.o] Erreur 1
-rm ../.obj/game.d
+make[1]: Rien à faire pour « all ».
 make[1] : on quitte le répertoire « /net/malt/t/emugnier001/Documents/tp_cc/S6/Pro/prog/.obj »
-make: *** [all] Erreur 2
-11:58:13 **** Incremental Build of configuration Build (GNU) for project bombeirb ****
+08:14:49 **** Incremental Build of configuration Build (GNU) for project bombeirb ****
 make all 
 make[1] : on entre dans le répertoire « /net/malt/t/emugnier001/Documents/tp_cc/S6/Pro/prog/.obj »
-gcc -MM -I../include  ../src/game.c > ../.obj/game.d
-gcc -c -Wall -O0 -g -std=c99 -I../include/ `sdl-config  --cflags` -o ../.obj/game.o ../src/game.c 
-../src/game.c:53:13: erreur: expected ‘=’, ‘,’, ‘;’, ‘asm’ or ‘__attribute__’ before ‘game_get_current’
- int current game_get_current(struct game* game) {
-             ^
-../src/game.c: In function ‘game_banner_display’:
-../src/game.c:98:3: attention : implicit declaration of function ‘game_get_current’ [-Wimplicit-function-declaration]
-   window_display_image(sprite_get_number(game_get_current(game))), x, y);
-   ^
-../src/game.c:98:3: erreur: too few arguments to function ‘window_display_image’
-In file included from ../src/game.c:6:0:
-../include/window.h:12:6: note: declared here
- void window_display_image(SDL_Surface* surface, int x, int y);
-      ^
-../src/game.c:98:66: attention : l'opérande à gauche de la virgule n'a pas d'effet [-Wunused-value]
-   window_display_image(sprite_get_number(game_get_current(game))), x, y);
-                                                                  ^
-../src/game.c:98:69: attention : l'opérande à gauche de la virgule n'a pas d'effet [-Wunused-value]
-   window_display_image(sprite_get_number(game_get_current(game))), x, y);
-                                                                     ^
-../src/game.c:98:3: attention : statement with no effect [-Wunused-value]
-   window_display_image(sprite_get_number(game_get_current(game))), x, y);
-   ^
-../src/game.c:98:72: erreur: expected ‘;’ before ‘)’ token
-   window_display_image(sprite_get_number(game_get_current(game))), x, y);
-                                                                        ^
-../src/game.c:98:72: erreur: expected statement before ‘)’ token
-make[1]: *** [../.obj/game.o] Erreur 1
-rm ../.obj/game.d
+make[1]: Rien à faire pour « all ».
 make[1] : on quitte le répertoire « /net/malt/t/emugnier001/Documents/tp_cc/S6/Pro/prog/.obj »
-make: *** [all] Erreur 2
-11:59:03 **** Incremental Build of configuration Build (GNU) for project bombeirb ****
+08:15:15 **** Incremental Build of configuration Build (GNU) for project bombeirb ****
 make all 
 make[1] : on entre dans le répertoire « /net/malt/t/emugnier001/Documents/tp_cc/S6/Pro/prog/.obj »
-gcc -MM -I../include  ../src/game.c > ../.obj/game.d
-gcc -c -Wall -O0 -g -std=c99 -I../include/ `sdl-config  --cflags` -o ../.obj/game.o ../src/game.c 
-../src/game.c:53:13: erreur: expected ‘=’, ‘,’, ‘;’, ‘asm’ or ‘__attribute__’ before ‘game_get’
- int current game_get(struct game* game) {
-             ^
-../src/game.c: In function ‘game_banner_display’:
-../src/game.c:98:3: attention : implicit declaration of function ‘game_get_current’ [-Wimplicit-function-declaration]
-   window_display_image(sprite_get_number(game_get_current(game))), x, y);
-   ^
-../src/game.c:98:3: erreur: too few arguments to function ‘window_display_image’
-In file included from ../src/game.c:6:0:
-../include/window.h:12:6: note: declared here
- void window_display_image(SDL_Surface* surface, int x, int y);
-      ^
-../src/game.c:98:66: attention : l'opérande à gauche de la virgule n'a pas d'effet [-Wunused-value]
-   window_display_image(sprite_get_number(game_get_current(game))), x, y);
-                                                                  ^
-../src/game.c:98:69: attention : l'opérande à gauche de la virgule n'a pas d'effet [-Wunused-value]
-   window_display_image(sprite_get_number(game_get_current(game))), x, y);
-                                                                     ^
-../src/game.c:98:3: attention : statement with no effect [-Wunused-value]
-   window_display_image(sprite_get_number(game_get_current(game))), x, y);
-   ^
-../src/game.c:98:72: erreur: expected ‘;’ before ‘)’ token
-   window_display_image(sprite_get_number(game_get_current(game))), x, y);
-                                                                        ^
-../src/game.c:98:72: erreur: expected statement before ‘)’ token
-make[1]: *** [../.obj/game.o] Erreur 1
-rm ../.obj/game.d
-make[1] : on quitte le répertoire « /net/malt/t/emugnier001/Documents/tp_cc/S6/Pro/prog/.obj »
-make: *** [all] Erreur 2
-12:02:23 **** Incremental Build of configuration Build (GNU) for project bombeirb ****
-make all 
-make[1] : on entre dans le répertoire « /net/malt/t/emugnier001/Documents/tp_cc/S6/Pro/prog/.obj »
-gcc -MM -I../include  ../src/game.c > ../.obj/game.d
-gcc -c -Wall -O0 -g -std=c99 -I../include/ `sdl-config  --cflags` -o ../.obj/game.o ../src/game.c 
-../src/game.c: In function ‘game_banner_display’:
-../src/game.c:97:3: erreur: too few arguments to function ‘window_display_image’
-   window_display_image(sprite_get_number(game_get_currentlevel(game))), x, y);
-   ^
-In file included from ../src/game.c:6:0:
-../include/window.h:12:6: note: declared here
- void window_display_image(SDL_Surface* surface, int x, int y);
-      ^
-../src/game.c:97:71: attention : l'opérande à gauche de la virgule n'a pas d'effet [-Wunused-value]
-   window_display_image(sprite_get_number(game_get_currentlevel(game))), x, y);
-                                                                       ^
-../src/game.c:97:74: attention : l'opérande à gauche de la virgule n'a pas d'effet [-Wunused-value]
-   window_display_image(sprite_get_number(game_get_currentlevel(game))), x, y);
-                                                                          ^
-../src/game.c:97:3: attention : statement with no effect [-Wunused-value]
-   window_display_image(sprite_get_number(game_get_currentlevel(game))), x, y);
-   ^
-../src/game.c:97:77: erreur: expected ‘;’ before ‘)’ token
-   window_display_image(sprite_get_number(game_get_currentlevel(game))), x, y);
-                                                                             ^
-../src/game.c:97:77: erreur: expected statement before ‘)’ token
-make[1]: *** [../.obj/game.o] Erreur 1
-rm ../.obj/game.d
-make[1] : on quitte le répertoire « /net/malt/t/emugnier001/Documents/tp_cc/S6/Pro/prog/.obj »
-make: *** [all] Erreur 2
-12:02:47 **** Incremental Build of configuration Build (GNU) for project bombeirb ****
-make all 
-make[1] : on entre dans le répertoire « /net/malt/t/emugnier001/Documents/tp_cc/S6/Pro/prog/.obj »
-gcc -MM -I../include  ../src/game.c > ../.obj/game.d
-gcc -c -Wall -O0 -g -std=c99 -I../include/ `sdl-config  --cflags` -o ../.obj/game.o ../src/game.c 
-gcc -o ../bin/bombeirb ../.obj/misc.o ../.obj/main.o ../.obj/player.o ../.obj/game.o ../.obj/window.o ../.obj/sprite.o ../.obj/map.o `sdl-config --libs`  -lSDL_image
-rm ../.obj/game.d
+make[1]: Rien à faire pour « all ».
 make[1] : on quitte le répertoire « /net/malt/t/emugnier001/Documents/tp_cc/S6/Pro/prog/.obj »

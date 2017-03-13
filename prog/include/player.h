@@ -7,7 +7,7 @@
 struct player;
 
 // Creates a new player with a given number of available bombs
-struct player* player_init(int bomb_number);
+struct player* player_init();
 void   player_free(struct player* player);
 
 // Returns the current position of the player
@@ -21,6 +21,12 @@ void player_set_current_way(struct player * player, enum direction direction);
 int  player_get_nb_bomb(struct player * player);
 void player_inc_nb_bomb(struct player * player);
 void player_dec_nb_bomb(struct player * player);
+
+// Set, Increase, Decrease the number of key that player can put
+int  player_get_nb_key(struct player * player);
+void player_inc_nb_key(struct player * player);
+void player_dec_nb_key(struct player * player);
+
 
 // Load the player position from the map
 void player_from_map(struct player* player, struct map* map);

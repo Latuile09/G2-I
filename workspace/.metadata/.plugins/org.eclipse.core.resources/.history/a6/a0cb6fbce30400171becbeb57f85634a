@@ -1,0 +1,47 @@
+#include <SDL/SDL_image.h>
+#include <assert.h>
+
+#include <bomb.h>
+#include <sprite.h>
+#include <window.h>
+#include <misc.h>
+#include <constant.h>
+
+struct bomb {
+	int x,y;
+	int range;
+	int time;
+};
+
+struct bomb* bomb_init(){
+	struct bomb* bomb= malloc(sizeof(*bomb));
+	if(!bomb)
+		error("Memory Error");
+// Initialisation is coming
+	return bomb;
+}
+
+void bomb_free(struct bomb* bomb){
+	assert(bomb);
+	free(bomb);
+}
+
+void set_bomb_range(struct bomb* bomb,int range){
+	assert(bomb);
+	bomb->range=range;
+}
+
+void bomb_set_place_and_time(struct bomb* bomb,int range,int time,struct player* player){
+	assert(bomb);
+	int x=player->x;
+	int y=player->y;
+	bomb->x=x;
+	bomb->y=y;
+	bomb->time=time;
+}
+
+void bomb_display(struct bomb* bomb){
+	assert(bomb);
+	printf("affichage bombe en ,%d,%d\n",bomb->x,bomb->y);
+	window_display_image(sprite_get_bomb(),bomb->x,bomb->y);
+}

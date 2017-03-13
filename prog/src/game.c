@@ -12,6 +12,7 @@ struct game {
 	short levels;            // nb maps of the game
 	short current;
 	struct player* player;
+	struct bomb** bomb;
 };
 
 struct game* game_new(void) {
@@ -22,9 +23,9 @@ struct game* game_new(void) {
 	game->levels = 1;
 	game->current = 0;
 	game->maps[game->current] = map_get_level(game->current+1);//start at level one
-	game->player = player_init(1);
+	game->player = player_init();
 	player_from_map(game->player, game->maps[0]); // get x,y of the player on the first map
-
+	game->bomb=malloc(sizeof(struct bomb*)*10);
 	return game;
 }
 
@@ -88,7 +89,7 @@ void game_banner_display(struct game* game) {
 		window_display_image(sprite_get_key(), x, y);
 
 	x = 3 * white_bloc + 7 * SIZE_BLOC;
-		window_display_image(sprite_get_number(1), x, y);
+		window_display_image(sprite_get_number(player_get_nb_key(game_get_player(game))), x, y);
 
 	x = 3 * white_bloc + 8 * SIZE_BLOC;
 		window_display_image(sprite_get_door_opened(1), x, y);
@@ -98,19 +99,22 @@ void game_banner_display(struct game* game) {
 
 }
 
-void game_display(struct game* game) {
+void game_display(struct game* game,int timer) {
 	assert(game);
 
 	window_clear();
-
 	game_banner_display(game);
 	map_display(game_get_current_map(game));
 	player_display(game->player);
-
+	for(int i=0 ; i<10 ; i++)
+	{
+	if (game->bomb[i]!=NULL && bomb_get_active(game->bomb[i])==1){
+	bomb_display(game->bomb[i],timer,game->maps[game->current],game->player); //temp
+	}}
 	window_refresh();
 }
 
-static short input_keyboard(struct game* game) {
+static short input_keyboard(struct game* game,int timer) {
 	SDL_Event event;
 	struct player* player = game_get_player(game);
 	struct map* map = game_get_current_map(game);
@@ -148,7 +152,18 @@ static short input_keyboard(struct game* game) {
 				if(move!=0 && move!=10)
 					change_level(game);
 				break;
-			case SDLK_SPACE:
+			case SDLK_SPACE:;
+				int i=player_get_nb_bomb(player);
+				if (i>0)
+				{
+					player_dec_nb_bomb(player);
+					printf("creation bombe\n");
+					game->bomb[i]=bomb_init();// not very elegant vor the indice
+					set_bomb_range(game->bomb[i],1);
+					printf("%d\n",timer);
+					bomb_set_place_and_time(game->bomb[i],1,timer,player_get_x(player),player_get_y(player));
+					bomb_set_active(game->bomb[i]);
+				}
 				break;
 			default:
 				break;
@@ -176,8 +191,8 @@ void change_level2(struct game* game,int level){
 
 
 
-int game_update(struct game* game) {
-	if (input_keyboard(game))
+int game_update(struct game* game, int timer) {
+	if (input_keyboard(game,timer))
 		return 1; // exit game
 	return 0;
 }
