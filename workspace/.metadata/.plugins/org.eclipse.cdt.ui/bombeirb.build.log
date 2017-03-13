@@ -1,8 +1,11 @@
-08:15:15 **** Incremental Build of configuration Build (GNU) for project bombeirb ****
+12:05:17 **** Incremental Build of configuration Build (GNU) for project bombeirb ****
 make all 
 make[1] : on entre dans le répertoire « /net/malt/t/emugnier001/Documents/tp_cc/S6/Pro/prog/.obj »
-make[1]: Rien à faire pour « all ».
+gcc -MM -I../include  ../src/bomb.c > ../.obj/bomb.d
+gcc -c -Wall -O0 -g -std=c99 -I../include/ `sdl-config  --cflags` -o ../.obj/bomb.o ../src/bomb.c 
+gcc -o ../bin/bombeirb ../.obj/misc.o ../.obj/main.o ../.obj/bomb.o ../.obj/player.o ../.obj/game.o ../.obj/window.o ../.obj/sprite.o ../.obj/map.o `sdl-config --libs`  -lSDL_image
+rm ../.obj/bomb.d
 make[1] : on quitte le répertoire « /net/malt/t/emugnier001/Documents/tp_cc/S6/Pro/prog/.obj »
 
-08:15:15 Build Finished (took 57ms)
+12:05:17 Build Finished (took 162ms)
 

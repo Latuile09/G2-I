@@ -1,56 +1,61 @@
-19:22:40 **** Incremental Build of configuration Build (GNU) for project bombeirb ****
+12:03:27 **** Incremental Build of configuration Build (GNU) for project bombeirb ****
 make all 
 make[1] : on entre dans le répertoire « /net/malt/t/emugnier001/Documents/tp_cc/S6/Pro/prog/.obj »
-make[1]: Rien à faire pour « all ».
-make[1] : on quitte le répertoire « /net/malt/t/emugnier001/Documents/tp_cc/S6/Pro/prog/.obj »
-19:22:45 **** Incremental Build of configuration Build (GNU) for project bombeirb ****
-make all 
-make[1] : on entre dans le répertoire « /net/malt/t/emugnier001/Documents/tp_cc/S6/Pro/prog/.obj »
-gcc -MM -I../include  ../src/main.c > ../.obj/main.d
-gcc -c -Wall -O0 -g -std=c99 -I../include/ `sdl-config  --cflags` -o ../.obj/main.o ../src/main.c 
-gcc -o ../bin/bombeirb ../.obj/misc.o ../.obj/main.o ../.obj/bomb.o ../.obj/player.o ../.obj/game.o ../.obj/window.o ../.obj/sprite.o ../.obj/map.o `sdl-config --libs`  -lSDL_image
-rm ../.obj/main.d
-make[1] : on quitte le répertoire « /net/malt/t/emugnier001/Documents/tp_cc/S6/Pro/prog/.obj »
-19:23:47 **** Incremental Build of configuration Build (GNU) for project bombeirb ****
-make all 
-make[1] : on entre dans le répertoire « /net/malt/t/emugnier001/Documents/tp_cc/S6/Pro/prog/.obj »
-gcc -MM -I../include  ../src/game.c > ../.obj/game.d
-gcc -c -Wall -O0 -g -std=c99 -I../include/ `sdl-config  --cflags` -o ../.obj/game.o ../src/game.c 
 gcc -MM -I../include  ../src/bomb.c > ../.obj/bomb.d
 gcc -c -Wall -O0 -g -std=c99 -I../include/ `sdl-config  --cflags` -o ../.obj/bomb.o ../src/bomb.c 
-gcc -o ../bin/bombeirb ../.obj/misc.o ../.obj/main.o ../.obj/bomb.o ../.obj/player.o ../.obj/game.o ../.obj/window.o ../.obj/sprite.o ../.obj/map.o `sdl-config --libs`  -lSDL_image
-rm ../.obj/game.d ../.obj/bomb.d
+../src/bomb.c: In function ‘bomb_destruction’:
+../src/bomb.c:123:1: erreur: expected declaration or statement at end of input
+ }
+ ^
+../src/bomb.c:123:1: erreur: expected declaration or statement at end of input
+make[1]: *** [../.obj/bomb.o] Erreur 1
+rm ../.obj/bomb.d
 make[1] : on quitte le répertoire « /net/malt/t/emugnier001/Documents/tp_cc/S6/Pro/prog/.obj »
-19:37:24 **** Incremental Build of configuration Build (GNU) for project bombeirb ****
+make: *** [all] Erreur 2
+12:03:31 **** Incremental Build of configuration Build (GNU) for project bombeirb ****
+make all 
+make[1] : on entre dans le répertoire « /net/malt/t/emugnier001/Documents/tp_cc/S6/Pro/prog/.obj »
+gcc -MM -I../include  ../src/bomb.c > ../.obj/bomb.d
+gcc -c -Wall -O0 -g -std=c99 -I../include/ `sdl-config  --cflags` -o ../.obj/bomb.o ../src/bomb.c 
+../src/bomb.c: In function ‘bomb_destruction’:
+../src/bomb.c:124:1: erreur: expected declaration or statement at end of input
+ }
+ ^
+make[1]: *** [../.obj/bomb.o] Erreur 1
+rm ../.obj/bomb.d
+make[1] : on quitte le répertoire « /net/malt/t/emugnier001/Documents/tp_cc/S6/Pro/prog/.obj »
+make: *** [all] Erreur 2
+12:04:32 **** Incremental Build of configuration Build (GNU) for project bombeirb ****
+make all 
+make[1] : on entre dans le répertoire « /net/malt/t/emugnier001/Documents/tp_cc/S6/Pro/prog/.obj »
+gcc -MM -I../include  ../src/bomb.c > ../.obj/bomb.d
+gcc -c -Wall -O0 -g -std=c99 -I../include/ `sdl-config  --cflags` -o ../.obj/bomb.o ../src/bomb.c 
+../src/bomb.c: In function ‘bomb_destruction’:
+../src/bomb.c:124:1: erreur: expected declaration or statement at end of input
+ }
+ ^
+make[1]: *** [../.obj/bomb.o] Erreur 1
+rm ../.obj/bomb.d
+make[1] : on quitte le répertoire « /net/malt/t/emugnier001/Documents/tp_cc/S6/Pro/prog/.obj »
+make: *** [all] Erreur 2
+12:04:59 **** Incremental Build of configuration Build (GNU) for project bombeirb ****
+make all 
+make[1] : on entre dans le répertoire « /net/malt/t/emugnier001/Documents/tp_cc/S6/Pro/prog/.obj »
+gcc -MM -I../include  ../src/bomb.c > ../.obj/bomb.d
+gcc -c -Wall -O0 -g -std=c99 -I../include/ `sdl-config  --cflags` -o ../.obj/bomb.o ../src/bomb.c 
+../src/bomb.c: In function ‘bomb_destruction’:
+../src/bomb.c:103:1: erreur: expected declaration or statement at end of input
+ }
+ ^
+make[1]: *** [../.obj/bomb.o] Erreur 1
+rm ../.obj/bomb.d
+make[1] : on quitte le répertoire « /net/malt/t/emugnier001/Documents/tp_cc/S6/Pro/prog/.obj »
+make: *** [all] Erreur 2
+12:05:17 **** Incremental Build of configuration Build (GNU) for project bombeirb ****
 make all 
 make[1] : on entre dans le répertoire « /net/malt/t/emugnier001/Documents/tp_cc/S6/Pro/prog/.obj »
 gcc -MM -I../include  ../src/bomb.c > ../.obj/bomb.d
 gcc -c -Wall -O0 -g -std=c99 -I../include/ `sdl-config  --cflags` -o ../.obj/bomb.o ../src/bomb.c 
 gcc -o ../bin/bombeirb ../.obj/misc.o ../.obj/main.o ../.obj/bomb.o ../.obj/player.o ../.obj/game.o ../.obj/window.o ../.obj/sprite.o ../.obj/map.o `sdl-config --libs`  -lSDL_image
 rm ../.obj/bomb.d
-make[1] : on quitte le répertoire « /net/malt/t/emugnier001/Documents/tp_cc/S6/Pro/prog/.obj »
-08:07:31 **** Incremental Build of configuration Build (GNU) for project bombeirb ****
-make all 
-make[1] : on entre dans le répertoire « /net/malt/t/emugnier001/Documents/tp_cc/S6/Pro/prog/.obj »
-make[1]: Rien à faire pour « all ».
-make[1] : on quitte le répertoire « /net/malt/t/emugnier001/Documents/tp_cc/S6/Pro/prog/.obj »
-08:08:54 **** Incremental Build of configuration Build (GNU) for project bombeirb ****
-make all 
-make[1] : on entre dans le répertoire « /net/malt/t/emugnier001/Documents/tp_cc/S6/Pro/prog/.obj »
-make[1]: Rien à faire pour « all ».
-make[1] : on quitte le répertoire « /net/malt/t/emugnier001/Documents/tp_cc/S6/Pro/prog/.obj »
-08:10:42 **** Incremental Build of configuration Build (GNU) for project bombeirb ****
-make all 
-make[1] : on entre dans le répertoire « /net/malt/t/emugnier001/Documents/tp_cc/S6/Pro/prog/.obj »
-make[1]: Rien à faire pour « all ».
-make[1] : on quitte le répertoire « /net/malt/t/emugnier001/Documents/tp_cc/S6/Pro/prog/.obj »
-08:14:49 **** Incremental Build of configuration Build (GNU) for project bombeirb ****
-make all 
-make[1] : on entre dans le répertoire « /net/malt/t/emugnier001/Documents/tp_cc/S6/Pro/prog/.obj »
-make[1]: Rien à faire pour « all ».
-make[1] : on quitte le répertoire « /net/malt/t/emugnier001/Documents/tp_cc/S6/Pro/prog/.obj »
-08:15:15 **** Incremental Build of configuration Build (GNU) for project bombeirb ****
-make all 
-make[1] : on entre dans le répertoire « /net/malt/t/emugnier001/Documents/tp_cc/S6/Pro/prog/.obj »
-make[1]: Rien à faire pour « all ».
 make[1] : on quitte le répertoire « /net/malt/t/emugnier001/Documents/tp_cc/S6/Pro/prog/.obj »

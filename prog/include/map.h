@@ -66,6 +66,9 @@ enum cell_type map_get_cell_type(struct map* map, int x, int y);
 // Return the type of a door (open or close)
 enum cell_type map_get_door_type(struct map* map, int x, int y);
 
+// Return the type of  Bonus/malus
+
+enum cell_type map_get_bonus_type(struct map* map, int x, int y);
 //Return the level of a door
 int door_level(struct map* map,int x,int y);
 

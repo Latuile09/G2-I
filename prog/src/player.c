@@ -13,6 +13,7 @@ struct player {
 	enum direction current_direction;
 	int nb_bombs;
 	int nb_keys;
+	int life;
 };
 
 struct player* player_init() {
@@ -23,6 +24,7 @@ struct player* player_init() {
 	player->current_direction = SOUTH;
 	player->nb_bombs = 3;
 	player->nb_keys = 0;
+	player->life = 3;
 
 	return player;
 }
@@ -66,7 +68,20 @@ int player_get_nb_key(struct player* player) {
 	assert(player);
 	return player->nb_keys;
 }
+int player_get_nb_life(struct player* player) {
+	assert(player);
+	return player->life;
+}
 
+void player_inc_nb_life(struct player* player){
+	assert(player);
+	player->life +=1;
+}
+
+void player_dec_nb_life(struct player* player){
+	assert(player);
+	player->life -=1;
+}
 void player_inc_nb_key(struct player* player) {
 	assert(player);
 	player->nb_keys += 1;
@@ -173,7 +188,6 @@ int player_move(struct player* player, struct map* map) {
 		break;
 
 	case WEST:
-		printf("try to go west\n");
 		if (player_move_aux(player, map, x - 1, y)) {
 			if(map_is_inside(map,x-2,y)){
 						printf("map is inside\n");

@@ -70,7 +70,7 @@ void game_banner_display(struct game* game) {
 	window_display_image(sprite_get_banner_life(), x, y);
 
 	x = white_bloc + SIZE_BLOC;
-	window_display_image(sprite_get_number(2), x, y);
+	window_display_image(sprite_get_number(player_get_nb_life(game_get_player(game))), x, y);
 
 	x = 2 * white_bloc + 2 * SIZE_BLOC;
 	window_display_image(sprite_get_banner_bomb(), x, y);
@@ -83,7 +83,7 @@ void game_banner_display(struct game* game) {
 	window_display_image(sprite_get_banner_range(), x, y);
 
 	x = 3 * white_bloc + 5 * SIZE_BLOC;
-	window_display_image(sprite_get_number(1), x, y);
+	window_display_image(sprite_get_number(2), x, y);
 
 	x = 3 * white_bloc + 6 * SIZE_BLOC;
 		window_display_image(sprite_get_key(), x, y);
@@ -109,8 +109,13 @@ void game_display(struct game* game,int timer) {
 	for(int i=0 ; i<10 ; i++)
 	{
 	if (game->bomb[i]!=NULL && bomb_get_active(game->bomb[i])==1){
-	bomb_display(game->bomb[i],timer,game->maps[game->current],game->player); //temp
-	}}
+	int blow_up=bomb_display(game->bomb[i],timer,game->maps[game->current],game->player); //temp
+	if(blow_up==1){
+		game->bomb[i]=NULL;
+	}
+	}
+
+	}
 	window_refresh();
 }
 
@@ -153,17 +158,18 @@ static short input_keyboard(struct game* game,int timer) {
 					change_level(game);
 				break;
 			case SDLK_SPACE:;
-				int i=player_get_nb_bomb(player);
-				if (i>0)
+				for(int i=0; i<10;i++){
+				if (game->bomb[i]==NULL && player_get_nb_bomb(player)!=0)
 				{
 					player_dec_nb_bomb(player);
 					printf("creation bombe\n");
-					game->bomb[i]=bomb_init();// not very elegant vor the indice
+					game->bomb[i]=bomb_init();// not very elegant for the indice
 					set_bomb_range(game->bomb[i],1);
 					printf("%d\n",timer);
-					bomb_set_place_and_time(game->bomb[i],1,timer,player_get_x(player),player_get_y(player));
+					bomb_set_place_and_time(game->bomb[i],1,timer,player_get_x(player),player_get_y(player),map);
 					bomb_set_active(game->bomb[i]);
-				}
+					break;
+				}}
 				break;
 			default:
 				break;

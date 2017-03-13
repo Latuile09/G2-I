@@ -26,6 +26,9 @@ void player_dec_nb_bomb(struct player * player);
 int  player_get_nb_key(struct player * player);
 void player_inc_nb_key(struct player * player);
 void player_dec_nb_key(struct player * player);
+int player_get_nb_life(struct player * player);
+void player_inc_nb_life(struct player * player);
+void player_dec_nb_life(struct player * player);
 
 
 // Load the player position from the map
