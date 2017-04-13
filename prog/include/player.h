@@ -14,6 +14,8 @@ void   player_free(struct player* player);
 int player_get_x(struct player* player);
 int player_get_y(struct player* player);
 
+int player_get_range(struct player* player);
+
 // Set the direction of the next move of the player
 void player_set_current_way(struct player * player, enum direction direction);
 
@@ -39,5 +41,7 @@ int player_move(struct player* player, struct map* map);
 
 // Display the player on the screen
 void player_display(struct player* player);
+
+void player_bonus(struct player* player, struct map* map, int x, int y);
 
 #endif /* PLAYER_H_ */

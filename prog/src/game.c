@@ -164,7 +164,7 @@ static short input_keyboard(struct game* game,int timer) {
 					player_dec_nb_bomb(player);
 					printf("creation bombe\n");
 					game->bomb[i]=bomb_init();// not very elegant for the indice
-					set_bomb_range(game->bomb[i],1);
+					set_bomb_range(game->bomb[i],player_get_range(player));
 					printf("%d\n",timer);
 					bomb_set_place_and_time(game->bomb[i],1,timer,player_get_x(player),player_get_y(player),map);
 					bomb_set_active(game->bomb[i]);
@@ -190,6 +190,9 @@ void change_level(struct game* game){
 void change_level2(struct game* game,int level){
 	game->current=level;
 	printf("%d",game->current);
+	for(int i=0; i<10;i++){
+		game->bomb[i]=NULL;
+	}
 	game->maps[game->current] = map_get_level(game->current+1);
 
 }

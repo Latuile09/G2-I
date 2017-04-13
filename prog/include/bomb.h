@@ -9,6 +9,9 @@ void bomb_free(struct bomb* bomb);
 
 void set_bomb_range(struct bomb* bomb,int range);
 
+void up_bomb_range(struct bomb* bomb);
+void down_bomb_range(struct bomb* bomb);
+
 void bomb_set_place_and_time(struct bomb* bomb,int range,int time,int x,int y, struct map* map);
 
 //get if the bomb is active or not

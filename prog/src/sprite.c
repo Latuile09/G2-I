@@ -133,6 +133,7 @@ static void bonus_load() {
 	bonus[BONUS_BOMB_RANGE_DEC] = load_image(IMG_BONUS_BOMB_RANGE_DEC);
 	bonus[BONUS_BOMB_NB_INC] = load_image(IMG_BONUS_BOMB_NB_INC);
 	bonus[BONUS_BOMB_NB_DEC] = load_image(IMG_BONUS_BOMB_NB_DEC);
+	bonus[BONUS_LIFE]=load_image(BANNER_LIFE);
 }
 
 static void bonus_unload() {

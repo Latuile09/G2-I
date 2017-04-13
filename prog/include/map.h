@@ -68,12 +68,15 @@ enum cell_type map_get_door_type(struct map* map, int x, int y);
 
 // Return the type of  Bonus/malus
 
-enum cell_type map_get_bonus_type(struct map* map, int x, int y);
+int map_get_undertype(struct map* map, int x, int y);
 //Return the level of a door
 int door_level(struct map* map,int x,int y);
 
 // Set the type of a cell
 void  map_set_cell_type(struct map* map, int x, int y, enum cell_type type);
+
+void map_set_cell(struct map* map, int x, int y, int cell);
+
 
 // Test if (x,y) is within the map
 int map_is_inside(struct map* map, int x, int y);

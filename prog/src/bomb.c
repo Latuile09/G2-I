@@ -32,6 +32,16 @@ void set_bomb_range(struct bomb* bomb,int range){
 	bomb->range=range;
 }
 
+void up_bomb_range(struct bomb* bomb){
+	assert(bomb);
+	bomb->range+=1;
+}
+
+void down_bomb_range(struct bomb* bomb){
+	assert(bomb);
+	bomb->range-=1;
+}
+
 void bomb_set_place_and_time(struct bomb* bomb,int range,int time,int x,int y,struct map* map){
 	assert(bomb);
 	bomb->x=x;
@@ -67,7 +77,7 @@ void bomb_destruction(struct bomb* bomb,struct map* map,struct player* player){
 		if(map_get_cell_type(map, bomb->x, bomb->y+i)== CELL_BOX){
 			printf("doit détruire la bombe\n");
 			window_display_image(sprite_get_bomb(), bomb->x*SIZE_BLOC, bomb->y*SIZE_BLOC+i*SIZE_BLOC);
-			map_set_cell_type(map, bomb->x, bomb->y+i, map_get_bonus_type(map,bomb->x, bomb->y+i));
+			map_set_cell(map, bomb->x, bomb->y+i, CELL_BONUS+map_get_undertype(map,bomb->x, bomb->y+i));
 			break;
 		}
 		if (map_get_cell_type(map, bomb->x, bomb->y+i)== CELL_PLAYER){
@@ -77,7 +87,7 @@ void bomb_destruction(struct bomb* bomb,struct map* map,struct player* player){
 		else{
 			if (map_get_cell_type(map, bomb->x, bomb->y+i)!= CELL_BOMB){
 				window_display_image(sprite_get_bomb(), bomb->x*SIZE_BLOC, bomb->y*SIZE_BLOC+i*SIZE_BLOC);
-				map_set_cell_type(map, bomb->x, bomb->y+i, CELL_EMPTY);
+				map_set_cell_type(map, bomb->x, bomb->y+i,CELL_EMPTY );
 			}
 
 		}

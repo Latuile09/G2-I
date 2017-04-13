@@ -8,12 +8,14 @@
 #include <constant.h>
 
 
+
 struct player {
 	int x, y;
 	enum direction current_direction;
 	int nb_bombs;
 	int nb_keys;
 	int life;
+	int range_bomb;
 };
 
 struct player* player_init() {
@@ -25,6 +27,7 @@ struct player* player_init() {
 	player->nb_bombs = 3;
 	player->nb_keys = 0;
 	player->life = 3;
+	player->range_bomb=1;
 
 	return player;
 }
@@ -32,6 +35,11 @@ struct player* player_init() {
 void player_free(struct player* player) {
 	assert(player);
 	free(player);
+}
+
+int player_get_range(struct player* player){
+	assert(player !=NULL);
+	return player->range_bomb;
 }
 
 int player_get_x(struct player* player) {
@@ -107,6 +115,33 @@ void player_from_map(struct player* player, struct map* map) {
 	}
 }
 
+void player_bonus(struct player* player, struct map* map, int x, int y){
+	assert(player);
+	assert(map);
+	switch (map_get_undertype(map, x, y)) {
+		case BONUS_BOMB_RANGE_INC:
+			player->range_bomb+=1;
+			break;
+
+		case BONUS_BOMB_RANGE_DEC:
+			player->range_bomb-=1;
+			break;
+
+		case BONUS_BOMB_NB_DEC:
+			player_dec_nb_bomb(player);
+			break;
+
+		case BONUS_BOMB_NB_INC:
+			player_inc_nb_bomb(player);
+			break;
+		case BONUS_LIFE:
+			player_inc_nb_life(player);
+			break;
+		}
+
+
+}
+
 static int player_move_aux(struct player* player, struct map* map, int x, int y) {
 
 	if (!map_is_inside(map, x, y))
@@ -174,8 +209,21 @@ int player_move(struct player* player, struct map* map) {
 							player->y++;
 							move = 10;
 						}
-						if(map_get_cell_type(map, x,y+1)==CELL_DOOR && map_get_door_type(map, x, y+1)==DOOR_OPEN){
-							move=door_level(map,x,y+1);
+						if(map_get_cell_type(map, x, y+1)==CELL_BONUS){
+							player_bonus(player,map,x,y+1);
+							player->y++;
+							move = 10;
+												}
+						if(map_get_cell_type(map, x,y+1)==CELL_DOOR){
+							if(map_get_door_type(map,x, y+1)==DOOR_CLOSE){
+								if(player->nb_keys>=1){
+									player_dec_nb_key(player);
+									map_set_cell(map,x ,y+1, 53); //changer 53 en porte et régler les warnings
+								}
+
+							}
+							if(map_get_door_type(map, x, y+1)==DOOR_OPEN){
+							move=door_level(map,x,y+1);}
 
 						}
 						if(map_get_cell_type(map, x, y+1)==CELL_KEY){

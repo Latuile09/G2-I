@@ -78,6 +78,12 @@ enum cell_type map_get_cell_type(struct map* map, int x, int y)
 	return map->grid[CELL(x,y)] & 0xf0;
 }
 
+int map_get_undertype(struct map* map, int x, int y)
+{
+	assert(map && map_is_inside(map, x, y));
+	return map->grid[CELL(x,y)] & 0x0f;
+}
+
 enum cell_type map_get_door_type(struct map* map, int x, int y)
 {
 	assert(map && map_is_inside(map, x, y));
@@ -85,12 +91,6 @@ enum cell_type map_get_door_type(struct map* map, int x, int y)
 
 }
 
-enum cell_type map_get_bonus_type(struct map* map, int x, int y)
-{
-	assert(map && map_is_inside(map, x, y));
-	return map->grid[CELL(x,y)] & 0x0f;
-
-}
 
 
 int door_level(struct map* map,int x,int y)
@@ -107,6 +107,13 @@ void map_set_cell_type(struct map* map, int x, int y, enum cell_type type)
 	map->grid[CELL(x,y)] = type;
 }
 
+void map_set_cell(struct map* map, int x, int y, int cell)
+{
+	assert(map );
+	assert(map_is_inside(map, x, y));
+	map->grid[CELL(x,y)] = cell;
+}
+
 void display_bonus(struct map* map, int x, int y, unsigned char type)
 {
 	// bonus is encoded with the 4 most significant bits
@@ -120,11 +127,14 @@ void display_bonus(struct map* map, int x, int y, unsigned char type)
 		break;
 
 	case BONUS_BOMB_NB_DEC:
-		window_display_image(sprite_get_bonus(BONUS_BOMB_RANGE_DEC), x, y);
+		window_display_image(sprite_get_bonus(BONUS_BOMB_NB_DEC), x, y);
 		break;
 
 	case BONUS_BOMB_NB_INC:
 		window_display_image(sprite_get_bonus(BONUS_BOMB_NB_INC), x, y);
+		break;
+	case BONUS_LIFE:
+		window_display_image(sprite_get_bonus(BONUS_LIFE), x, y);
 		break;
 	}
 }

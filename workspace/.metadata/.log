@@ -7667,3 +7667,48 @@ java.lang.IllegalArgumentException: Cannot modify exiting connector
 	at org.eclipse.jface.text.reconciler.MonoReconciler.process(MonoReconciler.java:77)
 	at org.eclipse.cdt.internal.ui.text.CReconciler.process(CReconciler.java:349)
 	at org.eclipse.jface.text.reconciler.AbstractReconciler$BackgroundThread.run(AbstractReconciler.java:206)
+!SESSION 2017-04-06 18:05:55.853 -----------------------------------------------
+eclipse.buildId=4.4.1.I20141112-1455
+java.version=1.8.0_25
+java.vendor=Oracle Corporation
+BootLoader constants: OS=linux, ARCH=x86_64, WS=gtk, NL=fr_FR
+Command-line arguments:  -os linux -ws gtk -arch x86_64
+
+!ENTRY org.eclipse.equinox.p2.publisher.eclipse 4 0 2017-04-06 18:05:58.960
+!MESSAGE Unable to acquire PluginConverter service during generation for: /opt/rh/eclipse-luna/root/usr/share/eclipse/dropins/remote.
+
+!ENTRY org.eclipse.equinox.p2.publisher.eclipse 4 0 2017-04-06 18:05:59.163
+!MESSAGE Unable to acquire PluginConverter service during generation for: /opt/rh/eclipse-luna/root/usr/share/eclipse/dropins/emf.
+
+!ENTRY org.eclipse.equinox.p2.publisher.eclipse 4 0 2017-04-06 18:05:59.901
+!MESSAGE Unable to acquire PluginConverter service during generation for: /opt/rh/eclipse-luna/root/usr/share/eclipse/dropins/rse.
+
+!ENTRY org.eclipse.equinox.p2.publisher.eclipse 4 0 2017-04-06 18:06:00.276
+!MESSAGE Unable to acquire PluginConverter service during generation for: /opt/rh/eclipse-luna/root/usr/share/eclipse/dropins/jgit.
+
+!ENTRY org.eclipse.equinox.p2.publisher.eclipse 4 0 2017-04-06 18:06:00.452
+!MESSAGE Unable to acquire PluginConverter service during generation for: /opt/rh/eclipse-luna/root/usr/share/eclipse/dropins/egit.
+
+!ENTRY org.eclipse.equinox.p2.publisher.eclipse 4 0 2017-04-06 18:06:00.529
+!MESSAGE Unable to acquire PluginConverter service during generation for: /opt/rh/eclipse-luna/root/usr/share/eclipse/dropins/mylyn.
+
+!ENTRY org.eclipse.equinox.p2.publisher.eclipse 4 0 2017-04-06 18:06:00.746
+!MESSAGE Unable to acquire PluginConverter service during generation for: /opt/rh/eclipse-luna/root/usr/lib64/eclipse/dropins/jdt.
+
+!ENTRY org.eclipse.equinox.p2.publisher.eclipse 4 0 2017-04-06 18:06:01.185
+!MESSAGE Unable to acquire PluginConverter service during generation for: /opt/rh/eclipse-luna/root/usr/lib64/eclipse/dropins/sdk.
+
+!ENTRY org.eclipse.equinox.p2.publisher.eclipse 4 0 2017-04-06 18:06:01.589
+!MESSAGE Unable to acquire PluginConverter service during generation for: /opt/rh/eclipse-luna/root/usr/lib64/eclipse/dropins/cdt.
+
+!ENTRY org.eclipse.equinox.p2.publisher.eclipse 4 0 2017-04-06 18:06:01.949
+!MESSAGE Unable to acquire PluginConverter service during generation for: /opt/rh/eclipse-luna/root/usr/lib64/eclipse/dropins/cdt-parsers.
+
+!ENTRY org.eclipse.equinox.p2.publisher.eclipse 4 0 2017-04-06 18:06:02.066
+!MESSAGE Unable to acquire PluginConverter service during generation for: /opt/rh/eclipse-luna/root/usr/lib64/eclipse/dropins/cdt-sdk.
+
+!ENTRY org.eclipse.equinox.p2.publisher.eclipse 4 0 2017-04-06 18:06:02.212
+!MESSAGE Unable to acquire PluginConverter service during generation for: /opt/rh/eclipse-luna/root/usr/lib64/eclipse/dropins/cvs.
+
+!ENTRY org.eclipse.equinox.p2.publisher.eclipse 4 0 2017-04-06 18:06:02.271
+!MESSAGE Unable to acquire PluginConverter service during generation for: /opt/rh/eclipse-luna/root/usr/lib64/eclipse/dropins/cdt-llvm.
